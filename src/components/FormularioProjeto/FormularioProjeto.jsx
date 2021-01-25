@@ -3,8 +3,9 @@ import {TextField, Container, Grid, makeStyles} from '@material-ui/core/'
 import ButtonEnviar from './Button'
 
 const useStyles = makeStyles({
-    Label: {
-        color: '#fff'
+    Width: {
+        width: '40%',
+        marginBottom: '1.5rem'
     }
 })
 
@@ -19,7 +20,7 @@ const valores = [
     },
     {
         value: '2',
-        label: '2 - Médio',
+        label: '2 - Alto',
     }
 ]
 
@@ -47,7 +48,7 @@ function FormularioProjeto({Enviar}){
                     fullWidth 
                     margin='dense'
                     required
-                    className={classes.Label}
+                    ref={nome}
                     onChange={ event => {
                         setNome(event.target.value)
                     }}
@@ -61,6 +62,8 @@ function FormularioProjeto({Enviar}){
                         label='Início' 
                         InputLabelProps={{shrink: true}} 
                         margin='normal'
+                        required
+                        className={classes.Width}
                         onChange={ event =>{
                             setInicio(event.target.value)
                         }}
@@ -70,16 +73,23 @@ function FormularioProjeto({Enviar}){
                         label='Final' 
                         InputLabelProps={{shrink: true}} 
                         margin='normal'
+                        required
+                        className={classes.Width}
                         onChange={ event => {
                             setFinal(event.target.value)
                         }}
                     />
                 </Grid>
-                <Grid>
+                <Grid
+                    container
+                    justify='space-between'
+                >
                     <TextField 
                         label='Valor'
                         margin='dense'
                         type='number'
+                        required
+                        className={classes.Width}
                         onChange={ event => {
                             setValor(event.target.value)
                         }}
@@ -88,6 +98,8 @@ function FormularioProjeto({Enviar}){
                         select
                         label="Risco"
                         value={risco}
+                        required
+                        className={classes.Width}
                         onChange={ event => {
                             setRisco(event.target.value)
                         }}
@@ -106,11 +118,14 @@ function FormularioProjeto({Enviar}){
                     label='Participantes'
                     fullWidth
                     margin='dense'
+                    required
                     onChange={ event => {
                         setParticipantes(event.target.value)
                     }}
                 />
-                <ButtonEnviar/>
+                <ButtonEnviar
+                    className={classes.ButtonEnviar}
+                />
             </form>
         </Container>
     )

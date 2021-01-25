@@ -8,19 +8,14 @@ function ControladorPage(){
 
     const paginas = [
         <ControladorProjeto Cadastrar={prox}/>,
-        <ControladorFormulario Retornar={anterior}/>
+        <ControladorFormulario/>
     ]
 
     function prox() {
         setEtapaAtual(etapaAtual + 1)
     }
-    
-    function anterior() {
-        setEtapaAtual(etapaAtual - 1)
-    }
 
     return <>{paginas[etapaAtual]}</>
-
 }
 
 export default ControladorPage
